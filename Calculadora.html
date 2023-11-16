@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+  <!-- abro html -->
   <head>
     <title>Calculadora</title>
+    <!-- defino el titulo -->
     <style>
       body {
+        /* agrego estilos a toda la pagina */
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
         display: flex;
@@ -73,6 +76,7 @@
   </head>
   <body>
     <div class="calculator-box">
+      <!-- defino contenedores con divs y le doy estilos -->
       <input
         type="text"
         id="display"
@@ -86,6 +90,7 @@
         "
       />
       <div class="button-container">
+        <!-- en este div se muestran todos los botones con su accion y respectivo simbolo -->
         <button onclick="clearDisplay()">C</button>
         <button onclick="appendToDisplay('Math.sqrt(')">√</button>
         <button onclick="appendToDisplay('(')">(</button>
@@ -111,23 +116,25 @@
       </div>
     </div>
     <script>
+      <!-- creo un script -->
+      /*  Inicio una variable para almacenar el valor a mostrar en la calculadora.*/
       let displayValue = '';
-
+      /* Agrego una función que agrega un valor al final del display y actualiza la pantalla.*/
       function appendToDisplay(value) {
         displayValue += value;
         document.getElementById('display').value = displayValue;
       }
-
+      /* Agrego  una función que elimina el último carácter del display y actualiza la pantalla.*/
       function deleteCharacter() {
         displayValue = displayValue.slice(0, -1);
         document.getElementById('display').value = displayValue;
       }
-
+      /* Agrego una función que borra todo el contenido del display y actualiza la pantalla. */
       function clearDisplay() {
         displayValue = '';
         document.getElementById('display').value = displayValue;
       }
-
+      /* Agrego una función que intenta calcular el resultado de la expresión en el display. */
       function calculateResult() {
         try {
           displayValue = displayValue.replace(/\*\*/g, '**');
@@ -143,12 +150,14 @@
           document.getElementById('display').value = 'Error';
         }
       }
-
+      /* Aca no dejo que la tecla Enter o la barra espaciadora se puedan presionar y cambiar algo. */
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
         }
       });
     </script>
+    <!-- cierro el script -->
   </body>
 </html>
+<!-- cierro el html -->
